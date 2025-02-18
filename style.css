@@ -1,0 +1,85 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: navy;
+    text-align: center;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Chatbot Styling */
+#chatbot-container {
+  position: fixed; /* Keep it at the bottom right */
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  border: 1px solid #ccc; /* Slightly visible border */
+  border-radius: 5px;
+  background-color: #fff; /* Match website background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
+}
+
+#chatbot-header {
+  background-color: navy; /* Match website heading color */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+#chatbot-body {
+  padding: 10px;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+#chatbot-input-area {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  display: flex;
+}
+
+#chatbot-input {
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+#chatbot-send {
+  background-color: navy; /* Match website heading color */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.chatbot-message {
+  margin-bottom: 5px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.chatbot-message.user {
+  background-color: #e2f0ff; /* Light blue for user messages */
+  text-align: right;
+}
+
+.chatbot-message.bot {
+  background-color: #f0f0f0; /* Match website background color */
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}

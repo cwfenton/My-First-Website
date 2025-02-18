@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to my website!</h1>
+    <p>This is my very first website built from scratch.</p>
+
+    <!-- Chatbot HTML - Inserted here -->
+    <div id="chatbot-container">
+        <div id="chatbot-header">Chat with us!</div>
+        <div id="chatbot-body">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div id="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Type your question...">
+            <button id="chatbot-send">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot JavaScript - Inserted here
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatbotHeader = document.getElementById('chatbot-header');
+        const chatbotBody = document.getElementById('chatbot-body');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotSend = document.getElementById('chatbot-send');
+
+        // Chatbot Responses (Customize these!)
+        const responses = {
+            "hello": "Hi there! How can I help you?",
+            "hi": "Hello! What can I do for you today?",
+            "what is this website about?": "This website is about [**REPLACE THIS WITH YOUR WEBSITE'S TOPIC - e.g., a demo website showcasing HTML skills**].",
+            "how do i contact you?": "This is just a demo website, so there's no real contact information.",
+            "thank you": "You're welcome!",
+            "thanks": "You're welcome!",
+            "help": "I can answer questions about the website. Try asking something like 'What is this website about?'"
+        };
+
+        // Function to add a message to the chat
+        function addMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chatbot-message', sender);
+            messageDiv.textContent = message;
+            chatbotBody.appendChild(messageDiv);
+
+            // Scroll to the bottom of the chat window
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+
+        // Function to handle user input and generate a response
+        function handleInput() {
+            const message = chatbotInput.value.trim().toLowerCase(); // Trim whitespace and convert to lowercase
+            if (message === "") return; // Don't send empty messages
+
+            addMessage(message, 'user'); // Display user message
+
+            let response = responses[message]; // Check if the message exists in responses
+
+            if (!response) {
+                response = "I'm sorry, I don't understand. Try asking something else, or rephrasing your question. You can also try typing 'help'.";
+            }
+
+            // Simulate a short delay for the bot's response
+            setTimeout(() => {
+                addMessage(response, 'bot');
+            }, 500);
+
+            chatbotInput.value = ""; // Clear the input field
+        }
+
+        // Event Listeners
+        chatbotSend.addEventListener('click', handleInput);
+
+        chatbotInput.addEventListener('keyup', function(event) {
+            if (event.key === "Enter") {
+                handleInput();
+            }
+        });
+
+        chatbotHeader.addEventListener('click', function() {
+            chatbotBody.classList.toggle('hidden');
+            chatbotInputArea.classList.toggle('hidden');
+        });
+
+        // Initial Chatbot Greeting
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                addMessage("Hi there! Welcome to my website! I'm here to help you navigate and answer questions about the site. Ask me anything!", 'bot');
+            }, 500); // Delay the greeting slightly
+        });
+    </script>
+
+</body>
+</html>
